@@ -1,0 +1,107 @@
+.topBox{
+    background-color: white;
+    top:0;
+    z-index:9999;
+    box-sizing: border-box;
+    position:fixed;
+    display: flex;
+    height: 65px;
+    padding: 7px 15px;
+    
+    min-height: 65px;
+    width: 100%;
+
+}
+.headLogo{
+    
+    margin-right: 12px;
+    width: 42px;
+
+   
+}
+.topRightBoxes{
+    
+    position: relative;
+    
+    width: 100%;
+    height: 100%;
+    
+}
+.rightInside{
+    
+    width: 60%;
+    height: 50%;
+    display: flex;
+    gap:2px;
+
+    align-items:center ;
+
+}
+.rightTopInput{
+  
+   padding-left:10px ;
+    vertical-align:bottom;
+    outline: none;
+    
+    height:90%;
+   
+}
+.aaaa{
+   
+    padding-right: 20px;
+    position:absolute;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  top:0;
+  right: 0;
+    width: 40%;
+    gap:6px;
+   
+    height: 100%;
+}
+.rightDowntext{
+    font-size: 15px;
+    font-weight: 500;
+    padding: 2px 6px;
+   
+}
+.rightDowntext:hover{
+    background-color: rgb(223, 223, 223);
+
+}
+.logosidebtn{
+    background-color:rgb(138, 222, 255);
+    padding:2px 13px ;
+    border-radius: 44px;
+    height: 70%;
+   display: flex;
+   font-size: 15px;
+   justify-content:center;
+   gap:5px;
+   align-items: center;
+}
+
+.user{
+    height: 100%;
+    padding: 4px;
+    border-radius: 50%;
+}
+.logosidebtn:hover{
+    box-shadow: 0px 2px 1px grey;
+
+}
+.logoIcons{
+    font-size: 28px;
+    padding: 4px;
+    border-radius: 50%;
+}
+.logoIcons:hover{
+    background-color: rgb(223, 223, 223);
+    
+}
+.user:hover{
+    
+    background-color: rgb(186, 183, 183);
+
+}
