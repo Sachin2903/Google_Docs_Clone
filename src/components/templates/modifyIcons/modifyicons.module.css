@@ -25,6 +25,7 @@
     gap:18px;
 }
 .percentDiv{
+    font-size: 17px;
     border-right: 1px solid rgba(0, 0, 0, 0.301);
     display: flex;
     gap: 3px;

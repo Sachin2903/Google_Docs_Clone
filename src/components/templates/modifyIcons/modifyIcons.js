@@ -16,14 +16,23 @@ import { CiTextAlignLeft, CiTextAlignCenter, CiTextAlignRight, CiTextAlignJustif
 
 
 export function ModifyIcons() {
+ function undofun(){
+    document.execCommand("undo");
+
+ }
+ function boldfun(){
+    document.execCommand("bold")
+ }
+
+
     return (
         <Fragment>
             <div className={styles.iconsDivmain}>
             <div className={styles.iconsDiv}>
                 <div className={styles.percentDiv}>
 
-                    <BiUndo className={styles.editIcons} />
-                    <BiRedo className={styles.editIcons} />
+                    <BiUndo onClick={undofun} className={styles.editIcons} />
+                    <BiRedo onClick={()=> document.execCommand("redo")} className={styles.editIcons} />
                     <AiOutlinePrinter className={styles.editIcons} />
                     <MdOutlineSpellcheck className={styles.editIcons} />
                     <BiPaintRoll className={styles.editIcons} />
@@ -33,7 +42,7 @@ export function ModifyIcons() {
                 <div className={styles.percentDivNormal}> Normal Text <TiArrowSortedDown /></div>
                 <div className={styles.percentDivNormal}> Arial <TiArrowSortedDown /></div>
                 <div className={styles.percentDivNormal}><HiMinus /><input className={styles.plusMinusInput} /> <HiPlusSm /></div>
-                <div className={styles.percentDivNormal4}><BiBold className={styles.editIcons} /><BiItalic className={styles.editIcons} /><ImUnderline className={styles.editIcons} /><MdOutlineFormatColorText className={styles.editIcons} /><LuHighlighter className={styles.editIcons} /></div>
+                <div className={styles.percentDivNormal4}><BiBold onClick={boldfun} className={styles.editIcons} /><BiItalic onClick={()=>{document.execCommand("italic")}} className={styles.editIcons} /><ImUnderline className={styles.editIcons} /><MdOutlineFormatColorText className={styles.editIcons} /><LuHighlighter className={styles.editIcons} /></div>
                 <div className={styles.percentDivNormal5}><IoMdLink className={styles.editIcons} /><BiCommentAdd className={styles.editIcons} /><MdOutlineImage className={styles.editIcons} /></div>
                 <div className={styles.percentDivNormal6}><CiTextAlignLeft className={styles.editIcons} /><CiTextAlignCenter className={styles.editIcons} /><CiTextAlignRight className={styles.editIcons} /><CiTextAlignJustify className={styles.editIcons} /></div>
                 <div className={styles.percentDiv}>
