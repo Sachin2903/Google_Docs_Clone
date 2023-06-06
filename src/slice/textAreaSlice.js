@@ -1,12 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const textAreaSliceRef=createSlice({
-    initialState:"",
+    initialState:{
+     textAreaValue:""
+    },
     name:"textAreaRef",
     reducers:{
         "addRef":((state,action)=>{
-            
             return action.payload;
+        }),
+        setTextAreaValue:((state,action)=>{
+          
+
+
         })
     }
 })
