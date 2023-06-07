@@ -22,6 +22,7 @@ export function ModifyIcons() {
  }
  function boldfun(){
     document.execCommand("bold")
+    console.log("hasdxas");
  }
 
 
@@ -42,7 +43,7 @@ export function ModifyIcons() {
                 <div className={styles.percentDivNormal}> Normal Text <TiArrowSortedDown /></div>
                 <div className={styles.percentDivNormal}> Arial <TiArrowSortedDown /></div>
                 <div className={styles.percentDivNormal}><HiMinus /><input className={styles.plusMinusInput} /> <HiPlusSm /></div>
-                <div className={styles.percentDivNormal4}><BiBold onClick={boldfun} className={styles.editIcons} /><BiItalic onClick={()=>{document.execCommand("italic")}} className={styles.editIcons} /><ImUnderline className={styles.editIcons} /><MdOutlineFormatColorText className={styles.editIcons} /><LuHighlighter className={styles.editIcons} /></div>
+                <div className={styles.percentDivNormal4}><button onClick={boldfun}><BiBold  className={styles.editIcons} /></button><BiItalic onClick={()=>{document.execCommand("italic")}} className={styles.editIcons} /><ImUnderline className={styles.editIcons} /><MdOutlineFormatColorText className={styles.editIcons} /><LuHighlighter className={styles.editIcons} /></div>
                 <div className={styles.percentDivNormal5}><IoMdLink className={styles.editIcons} /><BiCommentAdd className={styles.editIcons} /><MdOutlineImage className={styles.editIcons} /></div>
                 <div className={styles.percentDivNormal6}><CiTextAlignLeft className={styles.editIcons} /><CiTextAlignCenter className={styles.editIcons} /><CiTextAlignRight className={styles.editIcons} /><CiTextAlignJustify className={styles.editIcons} /></div>
                 <div className={styles.percentDiv}>
