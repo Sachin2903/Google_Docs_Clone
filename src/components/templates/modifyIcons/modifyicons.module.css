@@ -56,10 +56,13 @@
     width: 28px;
 }
 .editIcons{
-  
+   background-color: transparent;
+   font-size: 25px;
+   border: none;
     padding:1.5px;
-    height: 80%;
-    width: 25px;
+    height: 100%;
+    width: 27px;
+    
 }
 .editIcons:hover{
     box-shadow: 0px 2px 1px grey;
