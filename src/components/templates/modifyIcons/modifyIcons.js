@@ -2,8 +2,7 @@ import { Fragment, useRef, useState } from "react";
 import styles from "./modifyicons.module.css";
 import { BiCommentAdd, BiUndo, BiRedo, BiPaintRoll, BiBold, BiItalic } from "react-icons/bi";
 import { RiPencilFill } from "react-icons/ri"
-
-import { AiOutlinePrinter } from "react-icons/ai";
+import { AiOutlinePrinter,AiOutlineStrikethrough } from "react-icons/ai";
 import { MdOutlineImage, MdOutlineSpellcheck } from "react-icons/md";
 import { IoMdLink } from "react-icons/io";
 import { TiArrowSortedDown } from "react-icons/ti";
@@ -192,15 +191,15 @@ export function ModifyIcons() {
                             ))}
                         </select>
                     </div>
-
+              {/* bold underline italic  */}
                     <div className={styles.percentDivNormal4}>
-                    <button onClick={boldfun}><BiBold className={styles.editIcons} /></button>
-                    <BiItalic onClick={() => { document.execCommand("italic") }} className={styles.editIcons} />
-                    <ImUnderline className={styles.editIcons} />
-                    <MdOutlineFormatColorText className={styles.editIcons} />
-                    <LuHighlighter className={styles.editIcons} />
+                    <button className={styles.editIcons} onClick={boldfun}><BiBold/></button>
+                    <button className={styles.editIcons} onClick={()=> document.execCommand("italic") }  ><BiItalic/></button>
+                    <button className={styles.editIcons} onClick={()=> document.execCommand("underline") }><ImUnderline /></button>
+                    <button className={styles.editIcons} onClick={()=> document.execCommand("strikethrough") }><AiOutlineStrikethrough /></button>
                     </div>
-
+            
+            {/* image and color */}
                     <div className={styles.percentDivNormal5}>
                         <IoMdLink className={styles.editIcons} />
                         <BiCommentAdd className={styles.editIcons} />
@@ -208,12 +207,15 @@ export function ModifyIcons() {
                         <MdOutlineImage className={styles.editIcons} />
                     </div>
 
+
+           {/* text align type */}
                     <div className={styles.percentDivNormal6}>
                         <button className={styles.editIcons} onClick={() => document.execCommand('justifyLeft', false, null)}><CiTextAlignLeft /></button>
                         <button className={styles.editIcons} onClick={() => document.execCommand('justifyCenter', false, null)}><CiTextAlignCenter /></button>
                         <button className={styles.editIcons} onClick={() => document.execCommand('justifyRight', false, null)}><CiTextAlignRight /></button>
                         <button className={styles.editIcons} onClick={() => document.execCommand('justifyFull', false, null)}><CiTextAlignJustify /></button>
                     </div>
+
                     <div className={styles.percentDiv}>
                         <RiPencilFill className={styles.editIcons} />
                         <MdOutlineKeyboardArrowUp className={styles.editIcons} />
