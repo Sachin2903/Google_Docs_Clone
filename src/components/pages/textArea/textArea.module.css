@@ -41,15 +41,6 @@
 		var(--ruler1-h) calc(var(--ruler-unit) * var(--ruler1-space) * var(--ruler-y)),
 		var(--ruler2-h) calc(var(--ruler-unit) * var(--ruler2-space) * var(--ruler-y));
 
-
-
-
-
-
-
-
-
-
 }
 
 .textArea {

@@ -1,70 +1,158 @@
-.iconsDivmain{
+.iconsDivmain {
     background-color: white;
     width: 100%;
     height: 60px;
     padding-top: 8px;
     position: fixed;
-    top:65px;
+    top: 65px;
 }
 
-.iconsDiv{
-   
-   
+.iconsDiv {
+
+
     width: 94%;
     height: 45px;
     padding: 5px 20px;
     border-radius: 44px;
 
     margin: 0 3vw;
-   
+
     font-size: 20px;
 
     background-color: rgb(241, 252, 255);
     display: flex;
     align-items: center;
-    gap:18px;
+    gap: 18px;
 }
-.percentDiv{
+
+.percentDiv {
     font-size: 17px;
     border-right: 1px solid rgba(0, 0, 0, 0.301);
     display: flex;
     gap: 3px;
-   padding-right: 7px;
+    padding-right: 7px;
     align-items: center;
     height: 65%;
 }
-.percentDivInput{
+
+.percentDivInput {
+
     height: 100%;
     border: 0;
-    width: 45px;
-    text-align: center;
-}
-.percen{
-  align-self: flex-start;
+    font-weight: bold;
+    width: 65px;
+    outline: none;
+
 }
 
-.percentDivNormal,.percentDivNormal4,.percentDivNormal5,.percentDivNormal6{
+.percen {
+    align-self: flex-start;
+}
+
+.percentDivNormal,
+.percentDivNormal4,
+.percentDivNormal5,
+.percentDivNormal6 {
     font-size: 17px;
     border-right: 1px solid rgba(0, 0, 0, 0.301);
     height: 80%;
     display: flex;
     align-items: center;
-    gap:10px;
+    gap: 10px;
     padding-right: 15px;
 }
-.plusMinusInput{
+
+.plusMinusInput {
     width: 28px;
 }
-.editIcons{
-   background-color: transparent;
-   font-size: 25px;
-   border: none;
-    padding:1.5px;
+
+.editIcons {
+    background-color: transparent;
+    font-size: 25px;
+    border: none;
+    padding: 1.5px;
     height: 100%;
     width: 27px;
-    
+
 }
-.editIcons:hover{
+
+.editIcons:hover {
     box-shadow: 0px 2px 1px grey;
     background-color: rgb(239, 238, 238);
+}
+
+
+
+
+
+
+.textAreaDiv {
+    width: 98%;
+    height: 100vh;
+    border: 0.1px solid rgba(0, 0, 0, 0.16);
+    margin-top: 135px;
+    margin-left: 1%;
+    margin-right: 1%;
+
+
+    background-color: #f9fbfd;
+    display: flex;
+
+    justify-content: center;
+    margin-top: 120px;
+
+    --ruler-unit: 1px;
+    --ruler-x: 1;
+    --ruler-y: 1;
+
+    --ruler1-bdw: 1px;
+    --ruler1-c: #7a6d6d93;
+    --ruler1-h: 12px;
+    --ruler1-space: 5;
+
+    --ruler2-bdw: 1px;
+    --ruler2-c: #7a6d6d93;
+    --ruler2-h: 24px;
+    --ruler2-space: 50;
+
+    background-attachment: relative;
+    background-image:
+        linear-gradient(90deg, var(--ruler1-c) 0 var(--ruler1-bdw), transparent 0),
+        linear-gradient(90deg, var(--ruler2-c) 0 var(--ruler2-bdw), transparent 0),
+        linear-gradient(0deg, var(--ruler1-c) 0 var(--ruler1-bdw), transparent 0),
+        linear-gradient(0deg, var(--ruler2-c) 0 var(--ruler2-bdw), transparent 0);
+    background-position: 0 0;
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size:
+        calc(var(--ruler-unit) * var(--ruler1-space) * var(--ruler-x)) var(--ruler1-h),
+        calc(var(--ruler-unit) * var(--ruler2-space) * var(--ruler-x)) var(--ruler2-h),
+        var(--ruler1-h) calc(var(--ruler-unit) * var(--ruler1-space) * var(--ruler-y)),
+        var(--ruler2-h) calc(var(--ruler-unit) * var(--ruler2-space) * var(--ruler-y));
+
+}
+
+.textArea {
+    border: 1px solid rgba(0, 0, 0, 0.345);
+
+    width: 55%;
+    margin-top: 40px;
+    height: 92%;
+    padding: 105px;
+    outline: none;
+}
+
+.fontFamily {
+    /* appearance: none; */
+    text-align: center;
+    background-color: #edf3fb;
+    border: none;
+    height: 100%;
+    font-weight: bold;
+
+}
+.fontSize{
+    border: 0;
+    background-color:#edf3fb;
+    width: 50px ;
+    height: 100%;
 }

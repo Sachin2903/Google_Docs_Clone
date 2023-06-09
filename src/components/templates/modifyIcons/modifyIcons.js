@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useRef, useState } from "react";
 import styles from "./modifyicons.module.css";
 import { BiCommentAdd, BiUndo, BiRedo, BiPaintRoll, BiBold, BiItalic } from "react-icons/bi";
 import { RiPencilFill } from "react-icons/ri"
@@ -16,34 +16,122 @@ import { CiTextAlignLeft, CiTextAlignCenter, CiTextAlignRight, CiTextAlignJustif
 
 
 export function ModifyIcons() {
+    const referOfEditBox = useRef();
+    const [zoomEle, setZoomEle] = useState("100%");
+    const [fontSize, setFontSize] = useState("text");
+    const [color, setColor] = useState("#000000");
+    const [showLink, setShowLink] = useState(false);
+    const [higlightColor, setHiglightColor] = useState("#000000");
+    const [link, setLink] = useState("");
+    const inputImage = useRef(null);
+
+
+
+
+
+    // zoom function
+    const zoom = ["100%", "150%", "75%", "50%", "25%"];
+    function handleZoom(e) {
+        setZoomEle(e.target.value);
+        if (e.target.value === "100%") {
+            referOfEditBox.current.style.transform = "scale(1)";
+        } else if (e.target.value === "150%") {
+            referOfEditBox.current.style.transform = "scale(1.5,1)";
+        } else if (e.target.value === "50%") {
+            referOfEditBox.current.style.transform = "scale(0.50,1)";
+        } else if (e.target.value === "25%") {
+            referOfEditBox.current.style.transform = "scale(0.25,1)";
+        } else if (e.target.value === "75%") {
+            referOfEditBox.current.style.transform = "scale(0.75,1)";
+        }
+    }
+    //font Style
+    const ListFontFam = ["Lucida Sans", "fantasy", "sans-serif", "monospace", "cursive", "Times New Roman", "system-ui", "ui-serif", "Impact", "ui-monospace", "serif", "ui-rounded", "fangsong", "Georgia", "ui-sans-serif"];
+    function handleFontStyles(e) {
+        document.execCommand("fontName", false, e.target.value);
+    }
+    //font size
+    const fontSizes = [
+        {
+            fontSize: 8,
+            action: "1",
+        },
+        {
+            fontSize: 9,
+            action: "2",
+        },
+        {
+            fontSize: 10,
+            action: "3",
+        },
+        {
+            fontSize: 11,
+            action: "4",
+        },
+        {
+            fontSize: 12,
+            action: "5",
+        },
+        {
+            fontSize: 14,
+            action: "6",
+        },
+        {
+            fontSize: 18,
+            action: "7",
+        },
+    ];
+
+
+    function handleFontSize(e) {
+        setFontSize(e.target.value);
+        document.execCommand("fontSize", "", e.target.value);
+    }
+
+
+
+
+
+
+
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
         const reader = new FileReader();
-    
+
         reader.onload = (event) => {
             const imageSrc = event.target.result;
             const imageElement = document.createElement('img');
             imageElement.src = imageSrc;
             imageElement.style.width = '150px'; // Set the desired width
             imageElement.style.height = '200px'; // Maintain aspect ratio
-    
+
             const range = window.getSelection().getRangeAt(0);
             range.insertNode(imageElement);
         };
-    
+
         reader.readAsDataURL(file);
     };
 
 
-
+    //   undu function 
     function undofun() {
         document.execCommand("undo");
-
     }
+
+    //  redu function
     function boldfun() {
         document.execCommand("bold")
-        console.log("hasdxas");
     }
+
+    //print function
+    function printerMyDoc() {
+        let printContents = referOfEditBox.current.innerHTML;
+        let originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+
 
 
     return (
@@ -51,19 +139,68 @@ export function ModifyIcons() {
             <div className={styles.iconsDivmain}>
                 <div className={styles.iconsDiv}>
                     <div className={styles.percentDiv}>
+                        {/* undo button */}
                         <button onClick={undofun} className={styles.editIcons} ><BiUndo /></button>
+
+                        {/* redu button */}
                         <button className={styles.editIcons} onClick={() => document.execCommand("redo")}><BiRedo /></button>
-                        <button className={styles.editIcons} ><AiOutlinePrinter /></button>
+
+                        {/* Print Button */}
+                        <button className={styles.editIcons} onClick={printerMyDoc} ><AiOutlinePrinter /></button>
+
+                        {/* dummy button */}
                         <button className={styles.editIcons}><MdOutlineSpellcheck /></button>
                         <button className={styles.editIcons}><BiPaintRoll /></button>
+
+
+                    </div>
+                    {/* zoom feature */}
+                    <div className={styles.percentDiv}>
+                        <select className={styles.percentDivInput} onChange={handleZoom}>
+                            <option>{zoomEle}</option>
+                            {zoom.map((x) => <option key={x}>{x}</option>)}
+                        </select>
+                    </div>
+                    {/* font Style */}
+                    <div className={styles.percentDivNormal}>
+                        <select className={styles.fontFamily} onChange={handleFontStyles}>
+                            <option>sans-serif</option>
+                            {ListFontFam.map((x) => (
+                                <option key={x}>{x}</option>
+                            ))}
+                        </select>
                     </div>
 
-                    <div className={styles.percentDiv}><input className={styles.percentDivInput} /><TiArrowSortedDown /></div>
-                    <div className={styles.percentDivNormal}> Normal Text <TiArrowSortedDown /></div>
-                    <div className={styles.percentDivNormal}> Arial <TiArrowSortedDown /></div>
-                    <div className={styles.percentDivNormal}><HiMinus /><input className={styles.plusMinusInput} /> <HiPlusSm /></div>
-                    <div className={styles.percentDivNormal4}><button onClick={boldfun}><BiBold className={styles.editIcons} /></button><BiItalic onClick={() => { document.execCommand("italic") }} className={styles.editIcons} /><ImUnderline className={styles.editIcons} /><MdOutlineFormatColorText className={styles.editIcons} /><LuHighlighter className={styles.editIcons} /></div>
-                    
+                    {/* font size */}
+
+                    <div className={styles.percentDivNormal}>
+                        <select
+                            className={styles.fontSize}
+
+                            onChange={(e) => handleFontSize(e)}
+                        >
+                            <option className={styles.fontSize}>
+                                {fontSize}
+                            </option>
+                            {fontSizes.map((x) => (
+                                <option
+                                    className={styles.fontSize}
+                                    key={x.action}
+                                >
+                                    {x.action}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div className={styles.percentDivNormal4}>
+                    <button onClick={boldfun}><BiBold className={styles.editIcons} /></button>
+                    <BiItalic onClick={() => { document.execCommand("italic") }} className={styles.editIcons} />
+                    <ImUnderline className={styles.editIcons} />
+                    <MdOutlineFormatColorText className={styles.editIcons} />
+                    <LuHighlighter className={styles.editIcons} />
+                    </div>
+
                     <div className={styles.percentDivNormal5}>
                         <IoMdLink className={styles.editIcons} />
                         <BiCommentAdd className={styles.editIcons} />
@@ -77,20 +214,23 @@ export function ModifyIcons() {
                         <button className={styles.editIcons} onClick={() => document.execCommand('justifyRight', false, null)}><CiTextAlignRight /></button>
                         <button className={styles.editIcons} onClick={() => document.execCommand('justifyFull', false, null)}><CiTextAlignJustify /></button>
                     </div>
-
                     <div className={styles.percentDiv}>
                         <RiPencilFill className={styles.editIcons} />
                         <MdOutlineKeyboardArrowUp className={styles.editIcons} />
 
                     </div>
 
-
-
                 </div>
             </div>
 
 
 
+
+            {/* textBox or area */}
+            <div className={styles.textAreaDiv}>
+                <div contentEditable={true} ref={referOfEditBox} className={styles.textArea}>
+                </div>
+            </div>
 
 
         </Fragment>
