@@ -2,14 +2,11 @@ import { Fragment, useRef, useState } from "react";
 import styles from "./modifyicons.module.css";
 import { BiCommentAdd, BiUndo, BiRedo, BiPaintRoll, BiBold, BiItalic } from "react-icons/bi";
 import { RiPencilFill } from "react-icons/ri"
-import { AiOutlinePrinter,AiOutlineStrikethrough } from "react-icons/ai";
+import { AiOutlinePrinter, AiOutlineStrikethrough ,AiOutlineHighlight} from "react-icons/ai";
 import { MdOutlineImage, MdOutlineSpellcheck } from "react-icons/md";
 import { IoMdLink } from "react-icons/io";
-import { TiArrowSortedDown } from "react-icons/ti";
-import { LuHighlighter } from "react-icons/lu"
-import { HiMinus, HiPlusSm } from "react-icons/hi";
 import { ImUnderline } from "react-icons/im";
-import { MdOutlineFormatColorText, MdOutlineKeyboardArrowUp } from "react-icons/md";
+import {  MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { CiTextAlignLeft, CiTextAlignCenter, CiTextAlignRight, CiTextAlignJustify } from "react-icons/ci";
 
 
@@ -18,11 +15,8 @@ export function ModifyIcons() {
     const referOfEditBox = useRef();
     const [zoomEle, setZoomEle] = useState("100%");
     const [fontSize, setFontSize] = useState("text");
-    const [color, setColor] = useState("#000000");
-    const [showLink, setShowLink] = useState(false);
-    const [higlightColor, setHiglightColor] = useState("#000000");
-    const [link, setLink] = useState("");
-    const inputImage = useRef(null);
+   
+    const inputImageTrigger = useRef(null);
 
 
 
@@ -88,27 +82,27 @@ export function ModifyIcons() {
     }
 
 
+    function handleHighlightColor(e) {
+       
+        document.execCommand("backColor", false, e.target.value);
+      }
 
 
 
 
 
     const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-
-        reader.onload = (event) => {
-            const imageSrc = event.target.result;
-            const imageElement = document.createElement('img');
-            imageElement.src = imageSrc;
-            imageElement.style.width = '150px'; // Set the desired width
-            imageElement.style.height = '200px'; // Maintain aspect ratio
-
-            const range = window.getSelection().getRangeAt(0);
-            range.insertNode(imageElement);
-        };
-
-        reader.readAsDataURL(file);
+        if (event.target.files[0]) {
+            let imgUrl = URL.createObjectURL(event.target.files[0]);
+            let img = document.createElement("img");
+            console.log(imgUrl);
+      
+            img.style.maxWidth = "35%";
+            img.style.maxHeight = "35%";
+      
+            img.src = imgUrl;
+            document.execCommand("insertHTML", false, img.outerHTML);
+          }
     };
 
 
@@ -191,24 +185,35 @@ export function ModifyIcons() {
                             ))}
                         </select>
                     </div>
-              {/* bold underline italic  */}
+                    {/* bold underline italic  */}
                     <div className={styles.percentDivNormal4}>
-                    <button className={styles.editIcons} onClick={boldfun}><BiBold/></button>
-                    <button className={styles.editIcons} onClick={()=> document.execCommand("italic") }  ><BiItalic/></button>
-                    <button className={styles.editIcons} onClick={()=> document.execCommand("underline") }><ImUnderline /></button>
-                    <button className={styles.editIcons} onClick={()=> document.execCommand("strikethrough") }><AiOutlineStrikethrough /></button>
+                        <button className={styles.editIcons} onClick={boldfun}><BiBold /></button>
+                        <button className={styles.editIcons} onClick={() => document.execCommand("italic")}  ><BiItalic /></button>
+                        <button className={styles.editIcons} onClick={() => document.execCommand("underline")}><ImUnderline /></button>
+                        <button className={styles.editIcons} onClick={() => document.execCommand("strikethrough")}><AiOutlineStrikethrough /></button>
                     </div>
-            
-            {/* image and color */}
+
+                    {/* image and color */}
                     <div className={styles.percentDivNormal5}>
                         <IoMdLink className={styles.editIcons} />
                         <BiCommentAdd className={styles.editIcons} />
-                        <input type="file" onChange={handleImageUpload} />
-                        <MdOutlineImage className={styles.editIcons} />
+
+                        <button>
+                            <label>
+                                <AiOutlineHighlight/>
+                            </label>
+                            <input
+                                type="color"
+                                onChange={handleHighlightColor}
+                            />
+                        </button>
+
+                        <input ref={inputImageTrigger} type="file"  onChange={handleImageUpload} />
+                        <button><MdOutlineImage onClick={() => { inputImageTrigger.current.click() }} className={styles.editIcons} /></button>
                     </div>
 
 
-           {/* text align type */}
+                    {/* text align type */}
                     <div className={styles.percentDivNormal6}>
                         <button className={styles.editIcons} onClick={() => document.execCommand('justifyLeft', false, null)}><CiTextAlignLeft /></button>
                         <button className={styles.editIcons} onClick={() => document.execCommand('justifyCenter', false, null)}><CiTextAlignCenter /></button>
