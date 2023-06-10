@@ -16,7 +16,7 @@ export function HeadBox() {
                 <img className={styles.headLogo} alt="loading" src={logo} />
                 <div className={styles.topRightBoxes}>
                     <div className={styles.rightInside}>
-                        <input className={styles.rightTopInput}  />
+                        <input className={styles.rightTopInput} placeholder="Untitled document" />
                         <AiOutlineStar className={styles.logoIcons}/>
                         <MdOutlineDriveFileMove className={styles.logoIcons}/>
                         <BsCloudCheck className={styles.logoIcons}/>
