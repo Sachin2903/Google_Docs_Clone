@@ -198,6 +198,7 @@ export function ModifyIcons() {
                         <IoMdLink className={styles.editIcons} />
                         <BiCommentAdd className={styles.editIcons} />
 
+
                         <button>
                             <label>
                                 <AiOutlineHighlight/>
@@ -208,7 +209,7 @@ export function ModifyIcons() {
                             />
                         </button>
 
-                        <input ref={inputImageTrigger} type="file"  onChange={handleImageUpload} />
+                        <input ref={inputImageTrigger} type="file" hidden onChange={handleImageUpload} />
                         <button><MdOutlineImage onClick={() => { inputImageTrigger.current.click() }} className={styles.editIcons} /></button>
                     </div>
 
