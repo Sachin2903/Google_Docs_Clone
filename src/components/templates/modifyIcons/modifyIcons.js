@@ -12,15 +12,10 @@ import { CiTextAlignLeft, CiTextAlignCenter, CiTextAlignRight, CiTextAlignJustif
 
 
 export function ModifyIcons() {
-    const referOfEditBox = useRef();
-    const [zoomEle, setZoomEle] = useState("100%");
-    const [fontSize, setFontSize] = useState("text");
-   
-    const inputImageTrigger = useRef(null);
-
-
-
-
+    const referOfEditBox = useRef(); //reference of text area or div
+    const [zoomEle, setZoomEle] = useState("100%"); //to upadte the first option in zoom feature
+    const [fontSize, setFontSize] = useState("text");  //to upadte the first option in fontsize feature
+    const inputImageTrigger = useRef(null); //reference of image input
 
     // zoom function
     const zoom = ["100%", "150%", "75%", "50%", "25%"];
@@ -43,7 +38,7 @@ export function ModifyIcons() {
     function handleFontStyles(e) {
         document.execCommand("fontName", false, e.target.value);
     }
-    //font size
+    //font size data
     const fontSizes = [
         {
             fontSize: 8,
@@ -75,13 +70,13 @@ export function ModifyIcons() {
         },
     ];
 
-
+//font size
     function handleFontSize(e) {
         setFontSize(e.target.value);
         document.execCommand("fontSize", "", e.target.value);
     }
 
-
+// text heilighter
     function handleHighlightColor(e) {
        
         document.execCommand("backColor", false, e.target.value);
@@ -90,7 +85,7 @@ export function ModifyIcons() {
 
 
 
-
+//   for image adding
     const handleImageUpload = (event) => {
         if (event.target.files[0]) {
             let imgUrl = URL.createObjectURL(event.target.files[0]);
