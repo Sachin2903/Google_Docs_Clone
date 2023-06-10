@@ -78,8 +78,6 @@ export function ModifyIcons() {
 
     // text heilighter
     function handleHighlightColor(e) {
-        console.log(e.target.value);
-
         document.execCommand("backColor", false, e.target.value);
     }
 
@@ -229,7 +227,7 @@ export function ModifyIcons() {
 
             {/* textBox or area */}
             <div className={styles.textAreaDiv}>
-                <div contenteditable="true" spellcheck="false" ref={referOfEditBox} className={styles.textArea}>
+                <div contentEditable={true} spellCheck="false" ref={referOfEditBox} className={styles.textArea}>
                 </div>
             </div>
 
