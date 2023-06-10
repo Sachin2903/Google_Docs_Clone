@@ -4,21 +4,17 @@
     height: 60px;
     padding-top: 8px;
     position: fixed;
+    z-index: 999999999999;
     top: 65px;
 }
 
 .iconsDiv {
-
-
-    width: 94%;
+      width: 94%;
     height: 45px;
     padding: 5px 20px;
     border-radius: 44px;
-
-    margin: 0 3vw;
-
+      margin: 0 3vw;
     font-size: 20px;
-
     background-color: rgb(241, 252, 255);
     display: flex;
     align-items: center;
@@ -101,7 +97,7 @@
     justify-content: center;
     margin-top: 120px;
 
-    --ruler-unit: 1px;
+    /* --ruler-unit: 1px;
     --ruler-x: 1;
     --ruler-y: 1;
 
@@ -127,7 +123,7 @@
         calc(var(--ruler-unit) * var(--ruler1-space) * var(--ruler-x)) var(--ruler1-h),
         calc(var(--ruler-unit) * var(--ruler2-space) * var(--ruler-x)) var(--ruler2-h),
         var(--ruler1-h) calc(var(--ruler-unit) * var(--ruler1-space) * var(--ruler-y)),
-        var(--ruler2-h) calc(var(--ruler-unit) * var(--ruler2-space) * var(--ruler-y));
+        var(--ruler2-h) calc(var(--ruler-unit) * var(--ruler2-space) * var(--ruler-y)); */
 
 }
 
@@ -135,6 +131,7 @@
     border: 1px solid rgba(0, 0, 0, 0.345);
     text-align: left;
     width: 55%;
+    background-color: white;
     margin-top: 40px;
     height: 92%;
     padding: 105px;

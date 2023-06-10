@@ -2,11 +2,11 @@ import { Fragment, useRef, useState } from "react";
 import styles from "./modifyicons.module.css";
 import { BiCommentAdd, BiUndo, BiRedo, BiPaintRoll, BiBold, BiItalic } from "react-icons/bi";
 import { RiPencilFill } from "react-icons/ri"
-import { AiOutlinePrinter, AiOutlineStrikethrough ,AiOutlineHighlight} from "react-icons/ai";
+import { AiOutlinePrinter, AiOutlineStrikethrough, AiOutlineHighlight } from "react-icons/ai";
 import { MdOutlineImage, MdOutlineSpellcheck } from "react-icons/md";
 import { IoMdLink } from "react-icons/io";
 import { ImUnderline } from "react-icons/im";
-import {  MdOutlineKeyboardArrowUp } from "react-icons/md";
+import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { CiTextAlignLeft, CiTextAlignCenter, CiTextAlignRight, CiTextAlignJustify } from "react-icons/ci";
 
 
@@ -18,7 +18,7 @@ export function ModifyIcons() {
     const inputImageTrigger = useRef(null); //reference of image input
 
     // zoom function
-    const zoom = ["100%", "150%", "75%", "50%", "25%"];
+    const zoom = ["150%", "100%", "75%", "50%", "25%"];
     function handleZoom(e) {
         setZoomEle(e.target.value);
         if (e.target.value === "100%") {
@@ -36,7 +36,7 @@ export function ModifyIcons() {
     //font Style
     const ListFontFam = ["Lucida Sans", "fantasy", "sans-serif", "monospace", "cursive", "Times New Roman", "system-ui", "ui-serif", "Impact", "ui-monospace", "serif", "ui-rounded", "fangsong", "Georgia", "ui-sans-serif"];
     function handleFontStyles(e) {
-        document.execCommand("fontName", false, e.target.value);
+        document.execCommand("fontName",false,e.target.value);
     }
     //font size data
     const fontSizes = [
@@ -70,34 +70,34 @@ export function ModifyIcons() {
         },
     ];
 
-//font size
+    //font size
     function handleFontSize(e) {
         setFontSize(e.target.value);
         document.execCommand("fontSize", "", e.target.value);
     }
 
-// text heilighter
+    // text heilighter
     function handleHighlightColor(e) {
-       
+        console.log(e.target.value);
+
         document.execCommand("backColor", false, e.target.value);
-      }
+    }
 
 
 
 
-//   for image adding
+    //   for image adding
     const handleImageUpload = (event) => {
         if (event.target.files[0]) {
             let imgUrl = URL.createObjectURL(event.target.files[0]);
             let img = document.createElement("img");
-            console.log(imgUrl);
-      
+            
             img.style.maxWidth = "35%";
             img.style.maxHeight = "35%";
-      
+
             img.src = imgUrl;
             document.execCommand("insertHTML", false, img.outerHTML);
-          }
+        }
     };
 
 
@@ -165,7 +165,7 @@ export function ModifyIcons() {
                         <select
                             className={styles.fontSize}
 
-                            onChange={(e) => handleFontSize(e)}
+                            onChange={handleFontSize}
                         >
                             <option className={styles.fontSize}>
                                 {fontSize}
@@ -196,16 +196,16 @@ export function ModifyIcons() {
 
                         <button>
                             <label>
-                                <AiOutlineHighlight/>
+                                <AiOutlineHighlight />
                             </label>
                             <input
                                 type="color"
                                 onChange={handleHighlightColor}
                             />
                         </button>
-
+                       
                         <input ref={inputImageTrigger} type="file" hidden onChange={handleImageUpload} />
-                        <button><MdOutlineImage onClick={() => { inputImageTrigger.current.click() }} className={styles.editIcons} /></button>
+                        <button onClick={() => { inputImageTrigger.current.click() }} className={styles.editIcons}><MdOutlineImage/></button>
                     </div>
 
 
@@ -227,11 +227,9 @@ export function ModifyIcons() {
             </div>
 
 
-
-
             {/* textBox or area */}
             <div className={styles.textAreaDiv}>
-                <div contentEditable={true} ref={referOfEditBox} className={styles.textArea}>
+                <div contenteditable="true" spellcheck="false" ref={referOfEditBox} className={styles.textArea}>
                 </div>
             </div>
 
