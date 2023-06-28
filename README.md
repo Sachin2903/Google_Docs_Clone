@@ -1,5 +1,5 @@
 # Google Docs Project:-
-Google Docs is an online word processor that lets us create and format documents and work with other people. Get our top tips for using Google Docs to avail these feature i try to create a google docs clone using React and exec command 
+Google Docs is an online word processor that lets us create and format documents and work with other people. Get our top tips for using Google Docs to avail these feature I try to create a google docs clone using React and exec command 
 
 # Deployment Site link
 Open https://google-docs-clone-sachin.netlify.app/ in your browser to view the application
