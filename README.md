@@ -3,9 +3,12 @@ Google Docs is an online word processor that lets us create and format documents
 
 # Deployment Site link
 Open https://google-docs-clone-sachin.netlify.app/ in your browser to view the application
+<br/>
+<br/>
+<br/>
+## Some Glimpses
+<br/>
 
-
-![Google_Docs_clone (3)](https://github.com/Sachin2903/Google_Docs_Clone/assets/92660783/4e6930fb-d654-494b-b255-82a80fbf1239)
 
 ![Google_Docs_clone (2)](https://github.com/Sachin2903/Google_Docs_Clone/assets/92660783/b6dae1a5-e7e9-4410-9b89-697b3c917fdd)
 
