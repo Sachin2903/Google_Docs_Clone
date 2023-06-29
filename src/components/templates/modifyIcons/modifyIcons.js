@@ -1,7 +1,7 @@
 import { Fragment, useRef, useState } from "react";
 import styles from "./modifyicons.module.css";
 import { BiCommentAdd, BiUndo, BiRedo, BiPaintRoll, BiBold, BiItalic } from "react-icons/bi";
-import { RiPencilFill } from "react-icons/ri"
+import { RiPencilFill } from "react-icons/ri";
 import { AiOutlinePrinter, AiOutlineStrikethrough, AiOutlineHighlight } from "react-icons/ai";
 import { MdOutlineImage, MdOutlineSpellcheck } from "react-icons/md";
 import { IoMdLink } from "react-icons/io";
@@ -17,6 +17,8 @@ export function ModifyIcons() {
     const [fontSize, setFontSize] = useState("text");  //to upadte the first option in fontsize feature
     const inputImageTrigger = useRef(null); //reference of image input
 
+
+    
     // zoom function
     const zoom = ["150%", "100%", "75%", "50%", "25%"];
     function handleZoom(e) {
